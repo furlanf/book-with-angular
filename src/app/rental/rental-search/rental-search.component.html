@@ -1,0 +1,15 @@
+<div class="container">
+  <section id="rentalListing">
+    <h1 class="page-title" *ngIf="rentals.length > 0">Your home in {{city | lowercase | ucwords}}</h1>
+    <h1 class="page-title" *ngIf="errors.length > 0">
+      <p *ngFor="let error of errors">{{error.detail}}</p>
+    </h1>
+    <div class="row">
+
+      <div class='col-md-3 col-xs-6' *ngFor="let rental of rentals">
+        <app-rental-list-item [rental]="rental"></app-rental-list-item>
+      </div>
+
+    </div>
+  </section>
+</div>

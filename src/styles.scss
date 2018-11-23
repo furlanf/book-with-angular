@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "variables";
+html,
+body,
+p {
+  color: $main-text-color;
+}
+
+.apartment {
+  color: #a72da3;
+}
+.condo {
+  color: #d68000;
+}
+.house {
+  color: #df1a1a;
+}
+.btn-bwm {
+  background: $main-color;
+  color: #fff;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.btn-ghost {
+  background-color: transparent !important;
+  color: $main-color !important;
+  border: 1px solid $main-color !important;
+
+  font-size: 12px;
+  &:hover,
+  &:focus {
+    color: #fff !important;
+    background-color: $main-color !important;
+  }
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.bwm-form {
+  color: $main-text-color;
+
+  form {
+    margin-bottom: 10px;
+  }
+
+  .alert {
+    p {
+      margin: 0;
+    }
+  }
+
+  h1 {
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .image-container {
+    position: relative;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  .form-text {
+    font-size: 13px;
+  }
+
+  .catchphrase {
+    text-align: center;
+    font-size: 42px;
+    position: absolute;
+    color: #f1f1f1;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+    letter-spacing: 1px;
+  }
+}

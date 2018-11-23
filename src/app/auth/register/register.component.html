@@ -1,0 +1,51 @@
+<section id="register">
+  <div class="bwm-form">
+    <div class="row">
+      <div class="col-md-5">
+        <h1 class="page-title">Register</h1>
+        <form #registerForm="ngForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" [(ngModel)]="formData.username" #username="ngModel" class="form-control" name="username" id="username"
+              required>
+
+            
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" id="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="formData.password" name="password" id="password"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="passwordConfirmation">Confirm Password</label>
+            <input type="password" class="form-control" [(ngModel)]="formData.passwordConfirmation" name="passwordConfirmation"
+              id="passwordConfirmation" required>
+          </div>
+          <button [disabled]="!registerForm.form.valid" (click)="register()" type="submit" class="btn btn-bwm">Submit</button>
+        </form>
+        <div *ngIf="errors.length > 0" class="alert alert-danger">
+
+          <div *ngFor="let error of errors">
+            {{error.detail}}
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 ml-auto">
+        <div class="image-container">
+          <h2 class="catchphrase">As our member you have access to most awesome places in the world.</h2>
+          <img src="assets/images/register-image.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

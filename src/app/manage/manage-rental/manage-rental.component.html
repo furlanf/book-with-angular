@@ -1,0 +1,36 @@
+
+<section id="userRentals">
+  <h1 class="page-title">My Rentals</h1>
+  <div class="row">
+    <ng-container *ngIf="rentals && rentals.length > 0">
+      <div class="col-md-4" *ngFor="let rental of rentals;let i = index">
+        <div class="card text-center">
+          <div class="card-block">
+            <h4 class="card-title">{{rental.title}} - {{rental.city | ucwords}}</h4>
+            <a class="btn btn-ghost" routerLink="/rentals/{{rental._id}}">Go to Rental</a>
+            <span *ngIf="rental.bookings.length > 0">
+              <app-manage-rental-booking [bookings]="rental.bookings"></app-manage-rental-booking>
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+             <p>Created at {{rental.createdAt | formatDate}}</p>
+             <button type="button" class="btn btn-bwm btn-delete" (click)="rentalDeleteIndex = i" *ngIf="rentalDeleteIndex !== i">Delete</button>
+             <div *ngIf="rentalDeleteIndex === i">
+              <strong>Do you confirm delete?</strong>
+
+             <button type="button" class="btn btn-success btn-sm" (click)="delete(rental)">Yes</button>
+             <button type="button" class="btn btn-danger btn-sm" (click)="rentalDeleteIndex = undefined">No</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-md-8" *ngIf="rentals && rentals.length === 0">
+      <div class="alert alert-warning">
+        You dont have any rentals currenty created. If you want advertised your property
+        please follow this link.
+        <a class="btn btn-bwm" routerLink="/rentals/new">Register Rental</a>
+      </div>
+    </div>
+  </div>
+</section>
