@@ -27,7 +27,8 @@ export class ManageRentalComponent implements OnInit {
   async delete(rental) {
     return await this.rentalService.deleteRentalById(rental._id).subscribe(
       response => {
-        this.rentals.splice(this.rentals.indexOf(rental), 1);
+        this.rentals.splice(this.rentalDeleteIndex, 1);
+        this.rentalDeleteIndex = undefined;
       },
       (err: HttpErrorResponse) => {
         this.toastr.error(err.error.errors[0].detail, "Failed!");
