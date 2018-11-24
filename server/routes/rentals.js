@@ -108,4 +108,56 @@ router.get("/:id", function(req, res) {
     });
 });
 
+router.get("/:id/verify-user", UserCtrl.authMiddleware, function(req, res) {
+  const user = res.locals.user;
+
+  Rental.findById(req.params.id)
+    .populate("user")
+    .exec(function(err, foundRental) {
+      console.log(err);
+      if (err)
+        return res.status(422).send({ errors: normalizeErrors(err.errors) });
+
+      if (user.id !== foundRental.user.id) {
+        return res.status(422).send({
+          errors: [{ title: "Invalid User", detail: "You are not the owner." }]
+        });
+      }
+
+      return res.send({ status: "verified" });
+    });
+});
+
+router.patch("/:id", UserCtrl.authMiddleware, function(req, res) {
+  const rentalData = req.body;
+  const user = res.locals.user;
+
+  Rental.findById(req.params.id)
+    .populate("user")
+    .exec(function(err, foundRental) {
+      if (err)
+        return res.status(422).send({ errors: normalizeErrors(err.errors) });
+
+      if (!foundRental) {
+        return res.status(422).send({
+          errors: [{ title: "Rental Error", detail: "Could not find Rental" }]
+        });
+      }
+
+      if (user.id !== foundRental.user.id) {
+        return res.status(422).send({
+          errors: [{ title: "Invalid User", detail: "You are not the owner." }]
+        });
+      }
+
+      foundRental.set(rentalData);
+      foundRental.save(function(err, updatedRental) {
+        if (err)
+          return res.status(422).send({ errors: normalizeErrors(err.errors) });
+
+        return res.send(updatedRental);
+      });
+    });
+});
+
 module.exports = router;

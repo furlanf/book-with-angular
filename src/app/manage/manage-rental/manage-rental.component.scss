@@ -19,9 +19,11 @@
     padding: 10px 15px;
   }
 
-  .btn-delete {
+  .btn-delete,
+  .btn-warning {
     float: right;
     font-size: 10px;
+    margin: 5px;
   }
 
   .btn-success,
