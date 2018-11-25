@@ -24,6 +24,7 @@ import { RentalCreateComponent } from "./rental-create/rental-create.component";
 import { RentalUpdateComponent } from "./rental-update/rental-update.component";
 import { EditableModule } from "../common/components/editable/editable.module";
 import { RentalGuard } from "./rental-service/rental.guard";
+import { ImageUploadModule } from "../common/components/image-upload/image-upload.module";
 
 const routes: Routes = [
   {
@@ -66,6 +67,7 @@ const routes: Routes = [
     MapModule,
     FormsModule,
     EditableModule,
+    ImageUploadModule,
     Daterangepicker
   ],
   providers: [

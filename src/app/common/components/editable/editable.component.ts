@@ -3,11 +3,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges,
-  ViewEncapsulation
+  OnChanges
 } from "@angular/core";
 
-@Component({})
 export class EditableComponent implements OnChanges {
   @Input() public entity: any;
 
