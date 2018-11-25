@@ -3,7 +3,10 @@
   <div class="upper-section">
     <div class="row">
       <div class="col-md-6">
-        <img src="{{rental.image}}" alt="">
+        <app-editable-image
+        [(entity)]="rental"
+        (entityUpdated)="updateRental(rental._id,$event)"
+        [field]="'image'"></app-editable-image>
       </div>
       <div class="col-md-6">
         <app-map [locationSubject]="locationSubject" [location]="rental.city + ', ' + rental.street"></app-map>

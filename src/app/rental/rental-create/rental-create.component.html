@@ -29,9 +29,7 @@
           </div>
 
           <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" (change)="handleImageChange()" name="image" class="form-control" id="image" required
-              placeholder="Upload file...">
+            <app-image-upload (imageUploaded)="handleImageUpload($event)" (imageError)="handleImageError()"></app-image-upload>
           </div>
           <div class="form-group">
             <label for="bedrooms">Bedrooms</label>
@@ -61,7 +59,7 @@
             <input type="checkbox" class="form-control" [(ngModel)]="newRental.shared" name="shared" id="shared"
               >
           </div>
-          <button [disabled]="!formRental.form.valid" (click)="createRental()" type="submit" class="btn btn-bwm">Submit</button>
+          <button [disabled]="!formRental.form.valid || !newRental.image" (click)="createRental()" type="submit" class="btn btn-bwm">Submit</button>
         </form>
 
         <div *ngIf="errors.length > 0" class="alert alert-danger">
