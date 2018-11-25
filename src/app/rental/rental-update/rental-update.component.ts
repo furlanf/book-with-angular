@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { RentalService } from "../rental-service/rental.service";
-import { Rental } from "../rental-service/rental.model";
-import { ToastsManager } from "ng2-toastr/ng2-toastr";
+import { ToastrService } from "ngx-toastr";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Subject } from "rxjs";
 import { UcWordsPipe } from "ngx-pipes";
+import { Rental } from "../rental-service/rental.model";
 
 @Component({
   selector: "app-rental-update",
@@ -23,11 +23,9 @@ export class RentalUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private rentalService: RentalService,
     private vcr: ViewContainerRef,
-    private toastr: ToastsManager,
+    private toastr: ToastrService,
     private ucwords: UcWordsPipe
-  ) {
-    this.toastr.setRootViewContainerRef(vcr);
-  }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
